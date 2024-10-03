@@ -14,3 +14,20 @@ navbar.forEach((anchor) => {
     anchor.style.paddingBottom = "";
   });
 });
+
+const minus = document.querySelector(".minus img");
+const plus = document.querySelector(".plus img");
+const counting = document.querySelector(".counting");
+let count = 0;
+
+plus.addEventListener("click", () => {
+  count++;
+  counting.textContent = count;
+});
+
+minus.addEventListener("click", () => {
+  if (count > 0) {
+    count--;
+    counting.textContent = count;
+  }
+});
