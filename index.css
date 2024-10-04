@@ -200,8 +200,7 @@ body {
   top: 100px;
   right: 40px;
   border-radius: 7px;
-  padding: 10px 15px 0px 15px;
-  display: none;
+  padding: 10px 15px 10px 15px;
 }
 .countshowing {
   position: absolute;
@@ -228,7 +227,7 @@ body {
   color: hsl(219, 9%, 45%);
   font-weight: 600;
   margin-top: 50px;
-  display: none;
+  /* display: none; */
 }
 
 .cart-image img {
