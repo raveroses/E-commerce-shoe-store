@@ -41,7 +41,7 @@ navbar.forEach((anchor) => {
     anchor.style.color = "hsl(220, 13%, 13%)";
     anchor.style.borderBottom = "4px solid hsl(26, 100%, 55%)";
     anchor.style.paddingBottom = "41px";
-    anchor.style.treansition = "borderBottom 2s ease";
+    anchor.style.transition = "borderBottom 2s ease";
   });
 
   anchor.addEventListener("mouseout", () => {
@@ -53,7 +53,8 @@ navbar.forEach((anchor) => {
 
 function Plus() {
   count++;
-  counting.textContent = count;
+  if (counting) counting.textContent = count;
+  if (countshowing) countshowing.textContent = count;
 
   if (countshowing.classList.contains("hidden")) {
     countshowing.classList.remove("hidden");
@@ -99,7 +100,7 @@ function ArrayImage(smallImage, idset) {
 
 function PriceControl() {
   cartcontentprice.textContent = `$${parseInt(price.textContent).toFixed(2)}`;
-  cartcontentmultiply.textContent = `*${count}`;
+  cartcontentmultiply.textContent = ` X${count}`;
   cartcontentotal.textContent = `$${(
     parseInt(price.textContent).toFixed(2) * count
   ).toFixed(2)}`;
@@ -120,13 +121,51 @@ function PriceControl() {
 secondFlex.addEventListener("click", PriceControl);
 
 function Delete() {
-  motherhidden.remove();
-  cartcontentprice.textContent = "";
-  cartcontentotal.textContent = "";
-  cartcontentmultiply.textContent = "";
+  motherhidden.classList.add("hidden");
+  if (cartcontentprice) cartcontentprice.textContent = "";
+  if (cartcontentotal) cartcontentotal.textContent = "";
+  if (cartcontentmultiply) cartcontentmultiply.textContent = "";
   count = 0;
   counting.textContent = 0;
   Plus();
   Minus();
+  PriceControl();
 }
 deletes.addEventListener("click", Delete);
+
+const imagemothers = document.querySelector(".image-mothers img");
+const images = document.querySelectorAll(".images img");
+const previouscaret = document.querySelector(".previous-caret");
+const nextcaret = document.querySelector(".next-caret");
+
+// arrayImage
+let extract = 0;
+
+function NextCaret() {
+  extract++;
+
+  if (extract >= arrayImage.length) {
+    extract = 0;
+  }
+  let idController = arrayImage[extract]["id"];
+
+  SmallImages(idController);
+
+  //   let accessArray = arrayImage[extract];
+  //   imagemothers.src = accessArray.image;
+}
+
+function SmallImages(id) {
+  images.forEach((image) => {
+    const dataset = image.dataset.id;
+
+    if (dataset === id) {
+      imagemothers.src = arrayImage[extract].image;
+      image.style.border = "1px solid blue";
+    } else {
+      image.style.border = "none";
+    }
+  });
+}
+nextcaret.addEventListener("click", NextCaret);
+// arrayImage.map((ele) => {});

@@ -253,6 +253,10 @@ body {
   color: hsl(220, 14%, 75%);
 }
 
+.cart-contents span {
+  font-size: 15px;
+  color: red;
+}
 .cart-content-flex h5 {
   margin-left: 5px;
 }
@@ -266,4 +270,59 @@ body {
   font-size: 15px;
   font-weight: 600;
   border-radius: 9px;
+}
+
+.childrens-images {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  margin-left: 35px;
+}
+
+.childrens-images .images {
+  margin-right: 20px;
+}
+.image-mothers img {
+  width: 430px;
+  border-radius: 15px;
+}
+
+.image-caret-flex {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+}
+
+.previous-caret {
+  background-color: hsl(25, 100%, 94%);
+  border-radius: 50%;
+  padding: 8px 12px;
+  transform: translateX(10px);
+  text-align: center;
+}
+
+.next-caret {
+  background-color: hsl(25, 100%, 94%);
+  border-radius: 50%;
+  padding: 8px 12px;
+  transform: translateX(-10px);
+  text-align: center;
+}
+.image-containers {
+  position: relative;
+}
+.close-button {
+  position: absolute;
+  left: 450px;
+  top: -35px;
+}
+
+.images {
+  margin-top: 20px;
+}
+.images img {
+  width: 90px;
+  border-radius: 7px;
 }
