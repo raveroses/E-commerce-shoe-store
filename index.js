@@ -1,3 +1,5 @@
+"use strict";
+
 const navbar = document.querySelectorAll(".navbar ul li a");
 const minus = document.querySelector(".minus img");
 const plus = document.querySelector(".plus img");
@@ -135,11 +137,13 @@ deletes.addEventListener("click", Delete);
 
 const imagemothers = document.querySelector(".image-mothers img");
 const images = document.querySelectorAll(".images img");
-const previouscaret = document.querySelector(".previous-caret");
 const nextcaret = document.querySelector(".next-caret");
-
+const previouscaret = document.querySelector(".previous-caret");
 // arrayImage
 let extract = 0;
+
+// FIRST IMAGE
+console.log(imagemothers);
 
 function NextCaret() {
   extract++;
@@ -148,24 +152,44 @@ function NextCaret() {
     extract = 0;
   }
   let idController = arrayImage[extract]["id"];
-
-  SmallImages(idController);
+  SmallImages(idController, extract);
 
   //   let accessArray = arrayImage[extract];
   //   imagemothers.src = accessArray.image;
 }
 
-function SmallImages(id) {
-  images.forEach((image) => {
-    const dataset = image.dataset.id;
+function PreviousCaret() {
+  extract--;
 
+  if (extract < 0) {
+    extract = arrayImage.length - 1;
+  }
+  let idController = arrayImage[extract]["id"];
+  console.log(idController);
+  SmallImages(idController, extract);
+}
+
+function SmallImages(id, extract) {
+  images.forEach((image) => {
+    const dataset = parseInt(image.dataset.id);
+    console.log(dataset);
+    console.log(image);
     if (dataset === id) {
       imagemothers.src = arrayImage[extract].image;
-      image.style.border = "1px solid blue";
+      image.style.border = "2px solid hsl(26, 100%, 55%)";
+      image.style.opacity = "0.5";
     } else {
       image.style.border = "none";
+      image.style.opacity = "1";
     }
   });
 }
 nextcaret.addEventListener("click", NextCaret);
+previouscaret.addEventListener("click", PreviousCaret);
 // arrayImage.map((ele) => {});
+
+// console.log(arrayImage); // Should show an array of objects
+// console.log(images); // Should show a NodeList or array of image elements
+// console.log(imagemothers); // Should log the main image element
+// console.log(nextcaret);
+// console.log("Extract index:", extract);
