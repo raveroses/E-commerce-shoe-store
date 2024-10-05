@@ -37,6 +37,15 @@ const cartcontents = document.querySelector(".cart-contents");
 const cartcontent = document.querySelector(".cart-content");
 const deletes = document.querySelector(".delete");
 const motherhidden = document.querySelector(".mother-hidden");
+const imagemothers = document.querySelector(".image-mothers img");
+const images = document.querySelectorAll(".images img");
+const nextcaret = document.querySelector(".next-caret");
+const previouscaret = document.querySelector(".previous-caret");
+const modal = document.querySelector(".modal");
+const overlay = document.querySelector(".overlay");
+const checkout = document.querySelector(".checkout");
+const cart = document.querySelector(".cart");
+const closebutton = document.querySelector(".close-button");
 let count = 0;
 navbar.forEach((anchor) => {
   anchor.addEventListener("mouseover", () => {
@@ -135,10 +144,6 @@ function Delete() {
 }
 deletes.addEventListener("click", Delete);
 
-const imagemothers = document.querySelector(".image-mothers img");
-const images = document.querySelectorAll(".images img");
-const nextcaret = document.querySelector(".next-caret");
-const previouscaret = document.querySelector(".previous-caret");
 // arrayImage
 let extract = 0;
 
@@ -186,10 +191,21 @@ function SmallImages(id, extract) {
 }
 nextcaret.addEventListener("click", NextCaret);
 previouscaret.addEventListener("click", PreviousCaret);
-// arrayImage.map((ele) => {});
 
-// console.log(arrayImage); // Should show an array of objects
-// console.log(images); // Should show a NodeList or array of image elements
-// console.log(imagemothers); // Should log the main image element
-// console.log(nextcaret);
-// console.log("Extract index:", extract);
+function Checkout() {
+  overlay.classList.remove("hidden");
+  modal.classList.remove("hidden");
+  cart.classList.add("hidden");
+}
+function CloseButton() {
+  modal.classList.add("hidden");
+  overlay.classList.add("hidden");
+}
+checkout.addEventListener("click", Checkout);
+closebutton.addEventListener("click", CloseButton);
+const carticon = document.querySelector(".cart-icon");
+function Cart() {
+  cart.classList.toggle("hidden");
+}
+
+carticon.addEventListener("click", Cart);
